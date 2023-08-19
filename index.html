@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>belajar alpine.js</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <style>
+        body {
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <!-- local state -->
+    <!-- <div x-data="{ nama: 'paozan' }">
+        <span x-text="nama"></span>
+    </div> -->
+
+    <!-- single-element data -->
+    <!-- <button x-data="{ label: 'klick di sini' }" x-text="label"></button> -->
+    <!-- --------------------------------------------------- -->
+    <!-- GLOBAL STATE -->
+    <!-- <div x-data>
+        <ul>
+            <template x-for="nm in $store.mahasiswa.nama">
+                <li x-text="nm"></li>
+            </template>
+        </ul>
+    </div> -->
+    <script>
+        // document.addEventListener('alpine:init', () => {
+        //     Alpine.store('mahasiswa', {
+        //         tahun: 2023,
+        //         nama: ['sandhika', 'doddy', 'erik']
+        //     })
+        // })
+    </script>
+    <!-- --------------------------------------------------- -->
+    <!-- DATA-LESS ALPINE (bukan data global atau local) -->
+    <!-- <button x-data @click="alert('tombol telah diclick')">send</button> -->
+    
+
+    <!-- 3. Templating -->
+    <!-- membuat kondisi -->
+    <!-- <div x-data="{angka: 3}" class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow">
+        <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent drop-shadow-sm"><span x-text="angka"></span> adalah angka <span x-text="angka % 2 === 0 ? 'Genap':'Ganjil'"></span></h1>
+    </div> -->
+
+
+    <!-- menampilkan element HTML -->
+    <!-- <div x-data=" {nama: 'youtube', link: '<a href=\'https://www.youtube.com/watch?v=sPLIwAwH6yg\' x-text=\'nama\'></a>'}" class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow">
+        <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent drop-shadow-sm">hai, <span x-html="link"></span></h1>
+    </div> -->
+
+
+    <!-- TOGGLING ELEMENT = x-show / x-if -->
+    <!-- <div x-data="{open: false}">
+        <button @click="open = !open" class="py-2 px-5 text-white rounded-md"></button>
+        <div x-show="open">Lorem ipsum dolor sit.</div>
+    </div> -->
+
+    <!-- <div x-data="{open: false}">
+        <button @click="open = !open" x-text="open ? 'tutup' : 'buka'" class="py-2 px-5 text-white rounded-md"></button>
+        <div x-show="open">Lorem ipsum dolor sit.</div>
+    </div> -->
+
+    <!-- <div x-data="{open: false}">
+        <button @click="open = !open" x-text="open ? 'tutup' : 'buka'" class="py-2 px-5 text-white rounded-md"></button>
+        <template x-if="open">
+            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, adipisci!</div>
+        </template>
+    </div> -->
+
+
+    <!-- TRANSITION = x-transition -->
+    <!-- <div x-data="{open: false}">
+        <button @click="open = !open" x-text="open ? 'tutup' : 'buka'" class="py-2 px-5 text-white bg-cyan-600 rounded-md"></button>
+        <div x-show="open" x-transition.duration.1000ms>Lorem ipsum dolor sit.</div>
+    </div> -->
+
+    <!-- BINDING ATTRIBUTES = yang bisa di bine = class, properti css, keadaan desible -->
+    <!-- <div x-data="{open: false}">
+        <button @click="open = !open" x-bind:class="open ? 'bg-cyan-600':'bg-slate-600'" x-text="open ? 'tutup' : 'buka'" class="py-2 px-5 text-white rounded-md"></button>
+        <div x-show="open" x-transition.origin.top.left.duration.1000ms>Lorem ipsum dolor sit.</div>
+    </div> -->
+
+
+
+
+
+
+    <!-- 4. Event -->
+    <!-- MENDENGARKAN EVENT -->
+    <!-- x-on:{nama_event} / @{nama_event} -->
+    <!-- <div x-data="{pesan: 'hello WPU'}">
+        <button x-on:click="window.alert(pesan)" class=" bg-cyan-600 py-2 px-5 text-white rounded-md"></button>
+    </div> -->
+    <!-- <div x-data="{pesan: 'hello WPU'}">
+        <button @click="window.alert(pesan)" class=" bg-cyan-600 py-2 px-5 text-white rounded-md"></button>
+    </div> -->
+
+    <!-- EVENT OBJECT -->
+    <!-- $event = for debug -->
+    <!-- <div x-data>
+        <button @click="console.log($event)" x-data="{oky:'oky'}" x-text="oky" class=" bg-cyan-600 py-2 px-5 text-white rounded-md"></button>
+    </div> -->
+    <!-- <div x-data>
+        <button id="tombolPesan" @click="console.dir($event.target)" x-data="{oky:'oky'}" x-text="oky" class=" bg-cyan-600 py-2 px-5 text-white rounded-md"></button>
+    </div> -->
+    <!-- <div x-data>
+        <button id="tombolPesan" @click="console.dir($event.target.id)" x-data="{oky:'oky'}" x-text="oky" class=" bg-cyan-600 py-2 px-5 text-white rounded-md"></button>
+    </div> -->
+    <!-- <div x-data>
+        <button data-pesan="dataPesan" @click="console.dir($event.target.dataset.pesan)" x-data="{oky:'oky'}" x-text="oky" class=" bg-cyan-600 py-2 px-5 text-white rounded-md"></button>
+    </div> -->
+    <!-- <div x-data>
+        <button @click="console.dir($event.target.classList)" x-data="{oky:'oky'}" x-text="oky" class=" bg-cyan-600 py-2 px-5 text-white rounded-md"></button>
+    </div> -->
+    <!-- <div x-data>
+        <button @click="ubahWarna" x-data="{oky:'oky'}" x-text="oky" class=" bg-cyan-600 py-2 px-5 text-white rounded-md"></button>
+    </div> -->
+    <script>
+        // function ubahWarna(e){
+        //     e.target.classList.add('bg-red-500')
+        // }
+    </script>
+
+
+    <!-- KEYBOARD EVENTS -->
+    <!-- @keyup & @keydown -->
+    <!-- <div x-data> -->
+        <!-- <label for="nama">Masukkan Nama</label> -->
+        <!-- <input type="text" @keyup="alert('data terkirim')"> -->
+        <!-- <input type="text" @keyup.enter="alert('data terkirim')"> -->
+        <!-- <input type="text" @keyup.shift.enter="alert('data terkirim')"> -->
+    <!-- </div> -->
+
+
+    <!-- CUSTOM EVENTS -->
+    <!-- $dispatch -->
+    
+    <!-- <div x-data @inibebas="alert('data terkirim')">
+        <button @click="$dispatch('inibebas')" class="bg-cyan-600 py-2 px-5 text-white rounded-md">oky</button>
+    </div> -->
+
+    <!-- <div x-data @inibebas="alert('data terkirim ' + $event.detail.nama)">
+        <button @click="$dispatch('inibebas', {nama: 'paozan'})" class="bg-cyan-600 py-2 px-5 text-white rounded-md"></button>
+    </div> -->
+
+
+
+
+    <!-- EVENT MODIFIERS -->
+    <!-- .prevent = pripend devault -->
+    <!-- .stop    = stop propagation -->
+    <!-- .outside = click sembarang untuk menutup-->
+    <!-- .window  = menjalanka event di mana saja-->
+    <!-- .once    = menjalankan fungsi hanya satu kali-->
+    <!-- .debounce = nunggu beberapa mili second baru jalankan function-->
+    <!-- .throttle = memanggil terus menerus setiap 250ms -->
+    <!-- .camel    = manipulasi nama event -->
+    <!-- ... -->
+
+    <!-- .prevent -->
+    <!-- <div x-data>
+        <form action="/post" @submit.prevent="alert('data dikirim oleh Alpine')">
+            <input type="text">
+            <button type="submit">kirim</button>
+        </form>
+    </div> -->
+
+    <!-- .stop -->
+    <!-- <div x-data @click="alert('div bisa di click')">
+        <button @click.stop="alert('button di click')">kirim</button>
+    </div> -->
+
+    <!-- .outside -->
+    <!-- <div x-data="{open: false}">
+        <button 
+        @keyup.esc.window="open = false"
+        @click.outside="open = false" 
+        @click="open = !open" 
+        x-bind:class="open ? 'bg-cyan-600':'bg-slate-600'" 
+        x-text="open ? 'tutup' : 'buka'" 
+        class="py-2 px-5 text-white rounded-md"></button>
+        <div x-show="open" x-transition.origin.top.left.duration.1000ms>Lorem ipsum dolor sit.</div>
+    </div> -->
+
+    <!-- .once -->
+    <!-- <div x-data>
+        <input type="text" @keyup.once="console.log($event.target.value)">
+    </div> -->
+
+    <!-- .debounce -->
+    <!-- <div x-data>
+        <input type="text" @keyup.debounce.500ms="console.log($event.target.value)">
+    </div> -->
+
+
+
+
+
+    <!-- 5.MODEL -->
+    <!-- model ini adalah sebuah cara, agar kita bisa merubah data yang sudah kita bikin di komponen kita menggunakan element-element input dari user. Bisa menggunakan text field, combo-box, check-box dll -->
+    
+    <!-- TWO WAY DATA BINDING -->
+    <!-- x-model -->
+        <!-- 
+            <input type="text">
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <input type="checkbox">
+            <input type="radio">
+            <select name="" id=""></select> 
+        -->
+
+    <!-- <div x-data="{pesan: ''}">
+        <input type="text" x-model="pesan"><br>
+        <span x-text="pesan"></span>
+    </div> -->
+
+    <!-- <div x-data="{pesan: ''}">
+        <textarea type="text" x-model="pesan"></textarea><br>
+        <span x-text="pesan.length" :class="pesan.length > 20 ? 'text-red-500':''"></span>
+    </div> -->
+
+    <div x-data="{open: false, hobby: []}">
+        <input type="checkbox" id="checkbox" x-model="open">
+        <label for="checkbox" x-text="!open ? 'kosong':'terisi'"></label>
+        <div class="mt-5">
+            <div class="flex items-center mb-2">
+                <input type="checkbox" x-model="hobby" id="menulis" value="menulis" class="w-4 h-4 text-blue-600 border-gray-300 rounded">
+                <label for="menulis" class="ml-2 text-sm">Menulis</label>
+            </div>
+            <div class="flex items-center mb-2">
+                <input type="checkbox" x-model="hobby" id="menyanyi" value="menyanyi" class="w-4 h-4 text-blue-600 border-gray-300 rounded">
+                <label for="menyanyi" class="ml-2 text-sm">Menyanyi</label>
+            </div>
+            <div class="flex items-center mb-2">
+                <input type="checkbox" x-model="hobby" id="ngoding" value="ngoding" class="w-4 h-4 text-blue-600 border-gray-300 rounded">
+                <label for="ngoding" class="ml-2 text-sm">Ngoding</label>
+            </div>
+            <p class="text-left text-sm">Hobby: <span x-text="hobby.map(h=>h.charAt(0).toUpperCase()+h.slice(1))"></span></p>
+        </div>
+    </div>
+   
+</body>
+</html>
